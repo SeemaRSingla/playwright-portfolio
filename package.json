@@ -1,0 +1,29 @@
+{
+  "name": "playwright-portfolio",
+  "version": "1.0.0",
+  "description": "E2E Testing Portfolio - Sauce Labs Demo Site with Playwright & TypeScript",
+  "scripts": {
+    "test": "playwright test",
+    "test:debug": "playwright test --debug",
+    "test:ui": "playwright test --ui",
+    "test:headed": "playwright test --headed",
+    "test:chrome": "playwright test --project=Desktop-Chrome",
+    "test:firefox": "playwright test --project=Desktop-Firefox",
+    "test:webkit": "playwright test --project=Desktop-WebKit"
+  },
+  "keywords": [
+    "playwright",
+    "e2e",
+    "testing",
+    "typescript",
+    "automation",
+    "qa"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.40.1",
+    "@types/node": "^20.10.6",
+    "typescript": "^5.3.3"
+  }
+}
