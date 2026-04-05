@@ -132,12 +132,12 @@ test.describe('Accessibility Tests @a11y @wcag2aa', () => {
     // Check for either label association or aria-label
     const hasLabel = await firstNameInput
       .evaluate((el) => {
-        const labels = document.querySelectorAll(`label[for="${el.id}"]`) as NodeListOf<HTMLElement>
+        const labels = document.querySelectorAll(`label[for="${el.id}"]`)
         return labels.length > 0 || !!(el as HTMLInputElement).ariaLabel
       })
       .catch(() => false)
 
     // This should be true for production code
-    await expect(hasLabel).toBe(true)
+    expect(hasLabel).toBe(true)
   })
 })
