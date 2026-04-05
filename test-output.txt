@@ -1,0 +1,251 @@
+
+> playwright-portfolio@1.0.0 test
+> playwright test
+
+
+Running 111 tests using 7 workers
+
+  ✓    5 [Desktop-Chrome] › playwright/e2e/accessibility.spec.ts:13:7 › Accessibility Tests @a11y @wcag2aa › Login page should be accessible @critical (1.5s)
+  ✓    7 [Desktop-Chrome] › playwright/e2e/accessibility.spec.ts:97:7 › Accessibility Tests @a11y @wcag2aa › Keyboard navigation - Login page @keyboard @wcag2a (1.8s)
+  ✓    4 [Desktop-Chrome] › playwright/e2e/accessibility.spec.ts:33:7 › Accessibility Tests @a11y @wcag2aa › Products page should be accessible (2.1s)
+  ✘    9 [Desktop-Chrome] › playwright/e2e/cart.spec.ts:48:7 › Sauce Labs - Cart Management Tests › should allow continuing shopping from cart (2.8s)
+  ✘   10 [Desktop-Chrome] › playwright/e2e/cart.spec.ts:58:7 › Sauce Labs - Cart Management Tests › should maintain cart after navigation (2.5s)
+  ✘    8 [Desktop-Chrome] › playwright/e2e/cart.spec.ts:30:7 › Sauce Labs - Cart Management Tests › should display correct items in cart (3.2s)
+  ✘    6 [Desktop-Chrome] › playwright/e2e/accessibility.spec.ts:71:7 › Accessibility Tests @a11y @wcag2aa › Checkout page should be accessible (4.7s)
+  ✘    3 [Desktop-Chrome] › playwright/e2e/accessibility.spec.ts:123:7 › Accessibility Tests @a11y @wcag2aa › Screen reader support - Form labels @sr (4.7s)
+  ✘    2 [Desktop-Chrome] › playwright/e2e/accessibility.spec.ts:56:7 › Accessibility Tests @a11y @wcag2aa › Cart page should be accessible (4.7s)
+  ✘    1 [Desktop-Chrome] › playwright/e2e/cart.spec.ts:10:7 › Sauce Labs - Cart Management Tests › should add and remove items from cart (4.7s)
+
+
+  1) [Desktop-Chrome] › playwright/e2e/accessibility.spec.ts:56:7 › Accessibility Tests @a11y @wcag2aa › Cart page should be accessible 
+
+    Test was interrupted.
+
+    Error: locator.waitFor: Test ended.
+    Call log:
+    [2m  - waiting for locator('[data-test="inventory-item"]').first().locator('[data-test="add-to-cart"]') to be visible[22m
+
+
+       at ../pages/Helpers.ts:155
+
+      153 |       if (text && text.includes(productName)) {
+      154 |         const addButton = item.locator('[data-test="add-to-cart"]')
+    > 155 |         await addButton.waitFor({ state: 'visible', timeout: 10000 })
+          |                         ^
+      156 |         await addButton.click({ timeout: 10000 })
+      157 |         return
+      158 |       }
+        at Object.addProductToCart (/Users/seemasingla/Repos/playwright-portfolio/playwright/pages/Helpers.ts:155:25)
+        at /Users/seemasingla/Repos/playwright-portfolio/playwright/e2e/accessibility.spec.ts:65:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/accessibility-Accessibilit-a607f-t-page-should-be-accessible-Desktop-Chrome/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/accessibility-Accessibilit-a607f-t-page-should-be-accessible-Desktop-Chrome/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/accessibility-Accessibilit-a607f-t-page-should-be-accessible-Desktop-Chrome/error-context.md
+
+  2) [Desktop-Chrome] › playwright/e2e/accessibility.spec.ts:71:7 › Accessibility Tests @a11y @wcag2aa › Checkout page should be accessible 
+
+    Test was interrupted.
+
+    Error: locator.waitFor: Test ended.
+    Call log:
+    [2m  - waiting for locator('[data-test="inventory-item"]').first().locator('[data-test="add-to-cart"]') to be visible[22m
+
+
+       at ../pages/Helpers.ts:155
+
+      153 |       if (text && text.includes(productName)) {
+      154 |         const addButton = item.locator('[data-test="add-to-cart"]')
+    > 155 |         await addButton.waitFor({ state: 'visible', timeout: 10000 })
+          |                         ^
+      156 |         await addButton.click({ timeout: 10000 })
+      157 |         return
+      158 |       }
+        at Object.addProductToCart (/Users/seemasingla/Repos/playwright-portfolio/playwright/pages/Helpers.ts:155:25)
+        at /Users/seemasingla/Repos/playwright-portfolio/playwright/e2e/accessibility.spec.ts:80:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/accessibility-Accessibilit-c3650-t-page-should-be-accessible-Desktop-Chrome/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/accessibility-Accessibilit-c3650-t-page-should-be-accessible-Desktop-Chrome/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/accessibility-Accessibilit-c3650-t-page-should-be-accessible-Desktop-Chrome/error-context.md
+
+  3) [Desktop-Chrome] › playwright/e2e/accessibility.spec.ts:123:7 › Accessibility Tests @a11y @wcag2aa › Screen reader support - Form labels @sr 
+
+    Test was interrupted.
+
+    Error: locator.waitFor: Test ended.
+    Call log:
+    [2m  - waiting for locator('[data-test="inventory-item"]').first().locator('[data-test="add-to-cart"]') to be visible[22m
+
+
+       at ../pages/Helpers.ts:155
+
+      153 |       if (text && text.includes(productName)) {
+      154 |         const addButton = item.locator('[data-test="add-to-cart"]')
+    > 155 |         await addButton.waitFor({ state: 'visible', timeout: 10000 })
+          |                         ^
+      156 |         await addButton.click({ timeout: 10000 })
+      157 |         return
+      158 |       }
+        at Object.addProductToCart (/Users/seemasingla/Repos/playwright-portfolio/playwright/pages/Helpers.ts:155:25)
+        at /Users/seemasingla/Repos/playwright-portfolio/playwright/e2e/accessibility.spec.ts:132:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/accessibility-Accessibilit-c0712-er-support---Form-labels-sr-Desktop-Chrome/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/accessibility-Accessibilit-c0712-er-support---Form-labels-sr-Desktop-Chrome/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/accessibility-Accessibilit-c0712-er-support---Form-labels-sr-Desktop-Chrome/error-context.md
+
+  4) [Desktop-Chrome] › playwright/e2e/cart.spec.ts:10:7 › Sauce Labs - Cart Management Tests › should add and remove items from cart 
+
+    Test was interrupted.
+
+    Error: locator.waitFor: Test ended.
+    Call log:
+    [2m  - waiting for locator('[data-test="inventory-item"]').first().locator('[data-test="add-to-cart"]') to be visible[22m
+
+
+       at ../pages/Helpers.ts:155
+
+      153 |       if (text && text.includes(productName)) {
+      154 |         const addButton = item.locator('[data-test="add-to-cart"]')
+    > 155 |         await addButton.waitFor({ state: 'visible', timeout: 10000 })
+          |                         ^
+      156 |         await addButton.click({ timeout: 10000 })
+      157 |         return
+      158 |       }
+        at Object.addProductToCart (/Users/seemasingla/Repos/playwright-portfolio/playwright/pages/Helpers.ts:155:25)
+        at /Users/seemasingla/Repos/playwright-portfolio/playwright/e2e/cart.spec.ts:14:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/cart-Sauce-Labs---Cart-Man-b5f05--and-remove-items-from-cart-Desktop-Chrome/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/cart-Sauce-Labs---Cart-Man-b5f05--and-remove-items-from-cart-Desktop-Chrome/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/cart-Sauce-Labs---Cart-Man-b5f05--and-remove-items-from-cart-Desktop-Chrome/error-context.md
+
+  5) [Desktop-Chrome] › playwright/e2e/cart.spec.ts:30:7 › Sauce Labs - Cart Management Tests › should display correct items in cart 
+
+    Test was interrupted.
+
+    Error: locator.waitFor: Test ended.
+    Call log:
+    [2m  - waiting for locator('[data-test="inventory-item"]').first().locator('[data-test="add-to-cart"]') to be visible[22m
+
+
+       at ../pages/Helpers.ts:155
+
+      153 |       if (text && text.includes(productName)) {
+      154 |         const addButton = item.locator('[data-test="add-to-cart"]')
+    > 155 |         await addButton.waitFor({ state: 'visible', timeout: 10000 })
+          |                         ^
+      156 |         await addButton.click({ timeout: 10000 })
+      157 |         return
+      158 |       }
+        at Object.addProductToCart (/Users/seemasingla/Repos/playwright-portfolio/playwright/pages/Helpers.ts:155:25)
+        at /Users/seemasingla/Repos/playwright-portfolio/playwright/e2e/cart.spec.ts:36:7
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/cart-Sauce-Labs---Cart-Man-f22c8-splay-correct-items-in-cart-Desktop-Chrome/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/cart-Sauce-Labs---Cart-Man-f22c8-splay-correct-items-in-cart-Desktop-Chrome/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/cart-Sauce-Labs---Cart-Man-f22c8-splay-correct-items-in-cart-Desktop-Chrome/error-context.md
+
+  6) [Desktop-Chrome] › playwright/e2e/cart.spec.ts:48:7 › Sauce Labs - Cart Management Tests › should allow continuing shopping from cart 
+
+    Test was interrupted.
+
+    Error: locator.waitFor: Test ended.
+    Call log:
+    [2m  - waiting for locator('[data-test="inventory-item"]').first().locator('[data-test="add-to-cart"]') to be visible[22m
+
+
+       at ../pages/Helpers.ts:155
+
+      153 |       if (text && text.includes(productName)) {
+      154 |         const addButton = item.locator('[data-test="add-to-cart"]')
+    > 155 |         await addButton.waitFor({ state: 'visible', timeout: 10000 })
+          |                         ^
+      156 |         await addButton.click({ timeout: 10000 })
+      157 |         return
+      158 |       }
+        at Object.addProductToCart (/Users/seemasingla/Repos/playwright-portfolio/playwright/pages/Helpers.ts:155:25)
+        at /Users/seemasingla/Repos/playwright-portfolio/playwright/e2e/cart.spec.ts:50:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/cart-Sauce-Labs---Cart-Man-72955-ntinuing-shopping-from-cart-Desktop-Chrome/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/cart-Sauce-Labs---Cart-Man-72955-ntinuing-shopping-from-cart-Desktop-Chrome/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/cart-Sauce-Labs---Cart-Man-72955-ntinuing-shopping-from-cart-Desktop-Chrome/error-context.md
+
+  7) [Desktop-Chrome] › playwright/e2e/cart.spec.ts:58:7 › Sauce Labs - Cart Management Tests › should maintain cart after navigation 
+
+    Test was interrupted.
+
+    Error: locator.waitFor: Test ended.
+    Call log:
+    [2m  - waiting for locator('[data-test="inventory-item"]').first().locator('[data-test="add-to-cart"]') to be visible[22m
+
+
+       at ../pages/Helpers.ts:155
+
+      153 |       if (text && text.includes(productName)) {
+      154 |         const addButton = item.locator('[data-test="add-to-cart"]')
+    > 155 |         await addButton.waitFor({ state: 'visible', timeout: 10000 })
+          |                         ^
+      156 |         await addButton.click({ timeout: 10000 })
+      157 |         return
+      158 |       }
+        at Object.addProductToCart (/Users/seemasingla/Repos/playwright-portfolio/playwright/pages/Helpers.ts:155:25)
+        at /Users/seemasingla/Repos/playwright-portfolio/playwright/e2e/cart.spec.ts:62:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/cart-Sauce-Labs---Cart-Man-d79a8-ntain-cart-after-navigation-Desktop-Chrome/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/cart-Sauce-Labs---Cart-Man-d79a8-ntain-cart-after-navigation-Desktop-Chrome/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/cart-Sauce-Labs---Cart-Man-d79a8-ntain-cart-after-navigation-Desktop-Chrome/error-context.md
+
+  7 interrupted
+    [Desktop-Chrome] › playwright/e2e/accessibility.spec.ts:56:7 › Accessibility Tests @a11y @wcag2aa › Cart page should be accessible 
+    [Desktop-Chrome] › playwright/e2e/accessibility.spec.ts:71:7 › Accessibility Tests @a11y @wcag2aa › Checkout page should be accessible 
+    [Desktop-Chrome] › playwright/e2e/accessibility.spec.ts:123:7 › Accessibility Tests @a11y @wcag2aa › Screen reader support - Form labels @sr 
+    [Desktop-Chrome] › playwright/e2e/cart.spec.ts:10:7 › Sauce Labs - Cart Management Tests › should add and remove items from cart 
+    [Desktop-Chrome] › playwright/e2e/cart.spec.ts:30:7 › Sauce Labs - Cart Management Tests › should display correct items in cart 
+    [Desktop-Chrome] › playwright/e2e/cart.spec.ts:48:7 › Sauce Labs - Cart Management Tests › should allow continuing shopping from cart 
+    [Desktop-Chrome] › playwright/e2e/cart.spec.ts:58:7 › Sauce Labs - Cart Management Tests › should maintain cart after navigation 
+  101 did not run
+  3 passed (5.4s)
+
+To open last HTML report run:
+[36m[39m
+[36m  npx playwright show-report[39m
+[36m[39m

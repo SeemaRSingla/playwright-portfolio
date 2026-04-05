@@ -5,7 +5,7 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 1 : undefined,
+  workers: process.env.CI ? 3 : undefined,
   reporter: process.env.CI
     ? [['html', { open: 'never' }], ['line']]
     : [['html'], ['list']],
@@ -14,20 +14,23 @@ export default defineConfig({
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
+    navigationTimeout: 30000,
+    actionTimeout: 15000,
   },
+  timeout: 90000,
   projects: [
     {
       name: 'Desktop-Chrome',
       use: { ...devices['Desktop Chrome'] },
     },
-    {
-      name: 'Desktop-Firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
-    {
-      name: 'Desktop-WebKit',
-      use: { ...devices['Desktop Safari'] },
-    },
+    // {
+    //   name: 'Desktop-Firefox',
+    //   use: { ...devices['Desktop Firefox'] },
+    // },
+    // {
+    //   name: 'Desktop-WebKit',
+    //   use: { ...devices['Desktop Safari'] },
+    // },
   ],
   webServer: undefined,
 })

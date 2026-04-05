@@ -2,6 +2,7 @@
   "name": "playwright-portfolio",
   "version": "1.0.0",
   "description": "E2E Testing Portfolio - Sauce Labs Demo Site with Playwright & TypeScript",
+  "type": "module",
   "scripts": {
     "test": "playwright test",
     "test:debug": "playwright test --debug",
@@ -9,7 +10,13 @@
     "test:headed": "playwright test --headed",
     "test:chrome": "playwright test --project=Desktop-Chrome",
     "test:firefox": "playwright test --project=Desktop-Firefox",
-    "test:webkit": "playwright test --project=Desktop-WebKit"
+    "test:webkit": "playwright test --project=Desktop-WebKit",
+    "lint": "eslint --max-warnings 0 playwright/",
+    "lint:fix": "eslint --fix playwright/",
+    "format:check": "prettier --check 'playwright/**/*.{ts,json,md}'",
+    "format:fix": "prettier --write 'playwright/**/*.{ts,json,md}'",
+    "typecheck": "tsc --noEmit",
+    "qa": "npm run typecheck && npm run format:check && npm run lint && npm run test"
   },
   "keywords": [
     "playwright",
@@ -22,8 +29,16 @@
   "author": "Your Name",
   "license": "MIT",
   "devDependencies": {
+    "@eslint/js": "^9.0.0",
     "@playwright/test": "^1.40.1",
+    "@types/eslint": "^8.56.0",
     "@types/node": "^20.10.6",
-    "typescript": "^5.3.3"
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "axe-playwright": "^1.2.3",
+    "eslint": "^9.0.0",
+    "prettier": "^3.2.0",
+    "typescript": "^5.3.3",
+    "typescript-eslint": "^7.0.0"
   }
 }

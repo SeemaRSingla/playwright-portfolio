@@ -1,12 +1,8 @@
-import { test, expect } from '@playwright/test'
-import { LoginPage } from '../pages/LoginPage'
+import { test, expect } from '../fixtures'
 
 test.describe('Sauce Labs - Login Tests', () => {
-  let loginPage: LoginPage
-
-  test.beforeEach(async ({ page }) => {
-    loginPage = new LoginPage(page)
-    await loginPage.goto()
+  test.beforeEach(async ({ helper }) => {
+    await helper.visitLoginPage()
   })
 
   test('should display login form', async ({ page }) => {
@@ -15,32 +11,32 @@ test.describe('Sauce Labs - Login Tests', () => {
     await expect(page.locator('[data-test="login-button"]')).toBeVisible()
   })
 
-  test('should login successfully with valid credentials', async ({ page }) => {
-    await loginPage.login('standard_user', 'secret_sauce')
+  test('should login successfully with valid credentials', async ({ helper, page }) => {
+    await helper.loginWithCredentials('standard_user', 'secret_sauce')
     await expect(page).toHaveURL(/.*inventory/)
   })
 
-  test('should reject invalid password', async () => {
-    await loginPage.login('standard_user', 'wrong_password')
-    const errorMessage = await loginPage.getErrorMessage()
+  test('should reject invalid password', async ({ helper }) => {
+    await helper.loginWithCredentials('standard_user', 'wrong_password')
+    const errorMessage = await helper.getLoginErrorMessage()
     expect(errorMessage).toContain('Username and password do not match')
   })
 
-  test('should show error for locked out user', async () => {
-    await loginPage.login('locked_out_user', 'secret_sauce')
-    const errorMessage = await loginPage.getErrorMessage()
+  test('should show error for locked out user', async ({ helper }) => {
+    await helper.loginWithCredentials('locked_out_user', 'secret_sauce')
+    const errorMessage = await helper.getLoginErrorMessage()
     expect(errorMessage).toContain('locked out')
   })
 
-  test('should display error message for empty username', async () => {
-    await loginPage.login('', 'secret_sauce')
-    const errorMessage = await loginPage.getErrorMessage()
+  test('should display error message for empty username', async ({ helper }) => {
+    await helper.loginWithCredentials('', 'secret_sauce')
+    const errorMessage = await helper.getLoginErrorMessage()
     expect(errorMessage).toContain('Username is required')
   })
 
-  test('should show error for empty password', async () => {
-    await loginPage.login('standard_user', '')
-    const errorMessage = await loginPage.getErrorMessage()
+  test('should show error for empty password', async ({ helper }) => {
+    await helper.loginWithCredentials('standard_user', '')
+    const errorMessage = await helper.getLoginErrorMessage()
     expect(errorMessage).toContain('Password is required')
   })
 })

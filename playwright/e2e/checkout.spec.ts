@@ -1,90 +1,76 @@
-import { test, expect } from '@playwright/test'
-import { LoginPage } from '../pages/LoginPage'
-import { ProductsPage } from '../pages/ProductsPage'
-import { CartPage } from '../pages/CartPage'
-import { CheckoutPage } from '../pages/CheckoutPage'
+import { test, expect } from '../fixtures'
 
 test.describe('Sauce Labs - Complete Purchase Flow', () => {
-  let loginPage: LoginPage
-  let productsPage: ProductsPage
-  let cartPage: CartPage
-  let checkoutPage: CheckoutPage
-
-  test.beforeEach(async ({ page }) => {
-    loginPage = new LoginPage(page)
-    productsPage = new ProductsPage(page)
-    cartPage = new CartPage(page)
-    checkoutPage = new CheckoutPage(page)
-
-    await loginPage.goto()
-    await loginPage.login('standard_user', 'secret_sauce')
-    await productsPage.goto()
+  test.beforeEach(async ({ helper }) => {
+    await helper.visitLoginPage()
+    await helper.loginWithCredentials('standard_user', 'secret_sauce')
+    await helper.visitProductsPage()
   })
 
-  test('should complete full checkout flow', async ({ page }) => {
+  test('should complete full checkout flow', async ({ helper, page }) => {
     // Add products
-    const names = await productsPage.getProductNames()
-    await productsPage.addProductToCart(names[0])
-    await productsPage.addProductToCart(names[1])
+    const names = await helper.getProductNames()
+    await helper.addProductToCart(names[0])
+    await helper.addProductToCart(names[1])
 
     // Navigate to cart
-    await productsPage.goToCart()
+    await helper.navigateToCart()
     await expect(page).toHaveURL(/.*cart/)
 
-    const cartCount = await cartPage.getCartItemCount()
+    const cartCount = await helper.getCartPageItemCount()
     expect(cartCount).toBe(2)
 
     // Proceed to checkout
-    await cartPage.proceedToCheckout()
+    await helper.proceedToCheckout()
     await expect(page).toHaveURL(/.*checkout-step-one/)
 
     // Fill checkout info
-    await checkoutPage.fillCheckoutInfo('John', 'Doe', '12345')
-    await checkoutPage.clickContinue()
+    await helper.fillCheckoutInformation('John', 'Doe', '12345')
+    await helper.clickCheckoutContinue()
     await expect(page).toHaveURL(/.*checkout-step-two/)
 
     // Complete order
-    await checkoutPage.clickFinish()
-    const isComplete = await checkoutPage.isCheckoutComplete()
+    await helper.clickCheckoutFinish()
+    const isComplete = await helper.isCheckoutComplete()
     expect(isComplete).toBe(true)
   })
 
-  test('should handle checkout with missing first name', async () => {
-    const names = await productsPage.getProductNames()
-    await productsPage.addProductToCart(names[0])
-    await productsPage.goToCart()
-    await cartPage.proceedToCheckout()
+  test('should handle checkout with missing first name', async ({ helper }) => {
+    const names = await helper.getProductNames()
+    await helper.addProductToCart(names[0])
+    await helper.navigateToCart()
+    await helper.proceedToCheckout()
 
-    await checkoutPage.fillCheckoutInfo('', 'Doe', '12345')
-    await checkoutPage.clickContinue()
+    await helper.fillCheckoutInformation('', 'Doe', '12345')
+    await helper.clickCheckoutContinue()
 
-    const errorMessage = await checkoutPage.getErrorMessage()
+    const errorMessage = await helper.getCheckoutErrorMessage()
     expect(errorMessage).toContain('First Name is required')
   })
 
-  test('should handle checkout with missing last name', async () => {
-    const names = await productsPage.getProductNames()
-    await productsPage.addProductToCart(names[0])
-    await productsPage.goToCart()
-    await cartPage.proceedToCheckout()
+  test('should handle checkout with missing last name', async ({ helper }) => {
+    const names = await helper.getProductNames()
+    await helper.addProductToCart(names[0])
+    await helper.navigateToCart()
+    await helper.proceedToCheckout()
 
-    await checkoutPage.fillCheckoutInfo('John', '', '12345')
-    await checkoutPage.clickContinue()
+    await helper.fillCheckoutInformation('John', '', '12345')
+    await helper.clickCheckoutContinue()
 
-    const errorMessage = await checkoutPage.getErrorMessage()
+    const errorMessage = await helper.getCheckoutErrorMessage()
     expect(errorMessage).toContain('Last Name is required')
   })
 
-  test('should handle checkout with missing postal code', async () => {
-    const names = await productsPage.getProductNames()
-    await productsPage.addProductToCart(names[0])
-    await productsPage.goToCart()
-    await cartPage.proceedToCheckout()
+  test('should handle checkout with missing postal code', async ({ helper }) => {
+    const names = await helper.getProductNames()
+    await helper.addProductToCart(names[0])
+    await helper.navigateToCart()
+    await helper.proceedToCheckout()
 
-    await checkoutPage.fillCheckoutInfo('John', 'Doe', '')
-    await checkoutPage.clickContinue()
+    await helper.fillCheckoutInformation('John', 'Doe', '')
+    await helper.clickCheckoutContinue()
 
-    const errorMessage = await checkoutPage.getErrorMessage()
+    const errorMessage = await helper.getCheckoutErrorMessage()
     expect(errorMessage).toContain('Postal Code is required')
   })
 })
